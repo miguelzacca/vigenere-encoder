@@ -11,9 +11,20 @@ const letters = "abcdefghijklmnopqrstuvwxyz";
  * @throws
  */
 const inputValidator = (input, key) => {
-  if (input.length < key.length) {
-    throw new Error("The key must have the same size as the text.");
+  if (!input || !key) {
+    throw new Error("No field can be empty.");
   }
+};
+
+/**
+ * @param {string} key
+ * @param {number} index
+ * @example
+ * const keyIndex = handleKeyIndex("abc", 7)
+ * @returns {string}
+ */
+const handleKeyIndex = (key, index) => {
+  return key[index] || key[key.length % index];
 };
 
 /**
@@ -30,7 +41,7 @@ const encode = (input, key) => {
 
   for (let index = 0; index < input.length; index++) {
     const plainTextIndex = letters.indexOf(input[index]);
-    const keyIndex = letters.indexOf(key[index]);
+    const keyIndex = letters.indexOf(handleKeyIndex(key, index));
 
     const newIndex = (plainTextIndex + keyIndex) % letters.length;
 
@@ -54,7 +65,7 @@ const decode = (input, key) => {
 
   for (let index = 0; index < input.length; index++) {
     const cipherTextIndex = letters.indexOf(input[index]);
-    const keyIndex = letters.indexOf(key[index]);
+    const keyIndex = letters.indexOf(handleKeyIndex(key, index));
 
     const newIndex =
       (cipherTextIndex - keyIndex + letters.length) % letters.length;
