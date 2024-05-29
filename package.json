@@ -1,0 +1,13 @@
+{
+  "name": "vigenere-encoder",
+  "version": "1.0.2",
+  "description": "Vigenere cipher encoder/decoder.",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
+  },
+  "author": "Miguel Zacca",
+  "license": "MIT"
+}
