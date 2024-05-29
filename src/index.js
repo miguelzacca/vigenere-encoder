@@ -11,7 +11,7 @@ const letters = "abcdefghijklmnopqrstuvwxyz";
  * @throws
  */
 const inputValidator = (input, key) => {
-  if (input.length !== key.length) {
+  if (input.length < key.length) {
     throw new Error("The key must have the same size as the text.");
   }
 };

@@ -1,6 +1,6 @@
 {
   "name": "vigenere-encoder",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Vigenere cipher encoder/decoder.",
   "main": "src/index.js",
   "type": "module",
