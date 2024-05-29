@@ -1,6 +1,6 @@
 # vigenere-encoder
 
-Vigenere cipher encoder/decoder.
+Vigenere cipher encoder/decoder. (npm package)
 
 ## Install
 
