@@ -1,8 +1,8 @@
 {
   "name": "vigenere-encoder",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Vigenere cipher encoder/decoder.",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

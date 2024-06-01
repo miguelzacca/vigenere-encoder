@@ -15,8 +15,8 @@ const inputValidator = (input: string, key: string): ValidData => {
   }
 
   return {
-    validInput: input.toLowerCase(),
-    validKey: key.toLowerCase().trim(),
+    validInput: input.toLowerCase().trim(),
+    validKey: key.toLowerCase().split(" ").join("").trim(),
   };
 };
 
@@ -33,7 +33,7 @@ const process = (input: string, key: string, encode: boolean): string => {
     const inputIndex = LETTERS.indexOf(validInput[i]);
 
     if (inputIndex === -1) {
-      output += inputIndex;
+      output += validInput[i];
       continue;
     }
 

@@ -10,8 +10,8 @@ const inputValidator = (input, key) => {
         throw new Error("No field can be empty.");
     }
     return {
-        validInput: input.toLowerCase(),
-        validKey: key.toLowerCase().trim(),
+        validInput: input.toLowerCase().trim(),
+        validKey: key.toLowerCase().split(" ").join("").trim(),
     };
 };
 /**
@@ -24,7 +24,7 @@ const process = (input, key, encode) => {
     for (let i = 0; i < validInput.length; ++i) {
         const inputIndex = LETTERS.indexOf(validInput[i]);
         if (inputIndex === -1) {
-            output += inputIndex;
+            output += validInput[i];
             continue;
         }
         const keyIndex = LETTERS.indexOf(validKey[i % validKey.length]);
@@ -37,14 +37,14 @@ const process = (input, key, encode) => {
 };
 /**
  * @example
- * const cipherText = encode("example", "abcdefg")
+ * const cipherText = encode("example", "key")
  */
 const encode = (plainText, key) => {
     return process(plainText, key, true);
 };
 /**
  * @example
- * const plainText = decode("oshfkan", "abcdefg")
+ * const plainText = decode("oshfkan", "key")
  */
 const decode = (cipherText, key) => {
     return process(cipherText, key, false);
