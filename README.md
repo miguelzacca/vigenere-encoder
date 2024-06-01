@@ -4,7 +4,7 @@ Vigenere cipher encoder/decoder. (npm package)
 
 ## Install
 
-```npm
+```bash
 npm i vigenere-encoder
 ```
 
@@ -21,6 +21,8 @@ const v = require("vigenere-encoder")
 ## Example
 
 ```node
+import v from "vigenere-encoder"
+
 const text = "Hello, world!"
 const key = "my key"
 
@@ -31,7 +33,7 @@ const plainText = v.decode(cipherText, key)
 console.log(plainText)
 ```
 output:
-```bash
+```txt
 tcvpm, gsppj!
 hello, world!
 ```
