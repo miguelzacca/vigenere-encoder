@@ -14,5 +14,15 @@
   "license": "MIT",
   "devDependencies": {
     "typescript": "^5.4.5"
-  }
+  },
+  "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miguelzacca/vigenere-encoder.git"
+  },
+  "keywords": ["vigenere", "cipher", "encode", "decode", "cryptography", "crypto"],
+  "bugs": {
+    "url": "https://github.com/miguelzacca/vigenere-encoder/issues"
+  },
+  "homepage": "https://github.com/miguelzacca/vigenere-encoder#readme"
 }
