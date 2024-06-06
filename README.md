@@ -13,10 +13,6 @@ npm i vigenere-encoder
 ```node
 import v from "vigenere-encoder"
 ```
-or
-```node
-const v = require("vigenere-encoder")
-```
 
 ## Example
 
