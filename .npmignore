@@ -1,2 +1,7 @@
 node_modules
 .vscode
+__test__
+src
+.gitignore
+tsconfig*
+.babelrc
