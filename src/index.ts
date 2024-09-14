@@ -1,68 +1,48 @@
-"use strict";
+import { middleware } from 'func-middleware'
 
-import { ValidData } from "./types/types";
+const LETTERS = 'abcdefghijklmnopqrstuvwxyz'
 
-const LETTERS = "abcdefghijklmnopqrstuvwxyz";
-
-/**
- * @example
- * inputValidator(input, key)
- * @throws
- */
-const inputValidator = (input: string, key: string): ValidData => {
+const inputValidator = (input: string, key: string, encode: boolean) => {
   if (!input || !key) {
-    throw new Error("No field can be empty.");
+    throw new Error('No field can be empty.')
   }
 
-  return {
-    validInput: input.toLowerCase().trim(),
-    validKey: key.toLowerCase().split(" ").join("").trim(),
-  };
-};
+  return [
+    input.toLowerCase().trim(),
+    key.toLowerCase().split(' ').join('').trim(),
+    encode,
+  ]
+}
 
-/**
- * @example
- * const cipherText = process(plainText, key, true)
- */
-const process = (input: string, key: string, encode: boolean): string => {
-  const { validInput, validKey } = inputValidator(input, key);
+const process = middleware((input: string, key: string, encode: boolean) => {
+  let output = ''
 
-  let output = "";
-
-  for (let i = 0; i < validInput.length; ++i) {
-    const inputIndex = LETTERS.indexOf(validInput[i]);
+  for (let i = 0; i < input.length; ++i) {
+    const inputIndex = LETTERS.indexOf(input[i])
 
     if (inputIndex === -1) {
-      output += validInput[i];
-      continue;
+      output += input[i]
+      continue
     }
 
-    const keyIndex = LETTERS.indexOf(validKey[i % validKey.length]);
+    const keyIndex = LETTERS.indexOf(key[i % key.length])
 
     const calc = encode
       ? inputIndex + keyIndex
-      : inputIndex - keyIndex + LETTERS.length;
+      : inputIndex - keyIndex + LETTERS.length
 
-    output += LETTERS[calc % LETTERS.length];
+    output += LETTERS[calc % LETTERS.length]
   }
 
-  return output;
-};
+  return output
+}, inputValidator)
 
-/**
- * @example
- * const cipherText = encode("example", "key")
- */
-const encode = (plainText: string, key: string): string => {
-  return process(plainText, key, true);
-};
+const encode = (plainText: string, key: string) => {
+  return process(plainText, key, true)
+}
 
-/**
- * @example
- * const plainText = decode("oshfkan", "key")
- */
-const decode = (cipherText: string, key: string): string => {
-  return process(cipherText, key, false);
-};
+const decode = (cipherText: string, key: string) => {
+  return process(cipherText, key, false)
+}
 
-export default { encode, decode };
+export default { encode, decode }
